@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Op Internship Graduation Presentation</title>
+    <style>
+        :root {
+            --bg-color: #0b1329;       /* كحلي ملكي عميق */
+            --card-bg: #1c2541;       /* رمادي كحلي متناسق جداً مع الخلفية */
+            --primary: #38bdf8;       /* أزرق سماوي مضيء للعناوين */
+            --secondary: #5cdb95;     /* أخضر فسفوري حيوي وممتاز للتباين */
+            --text-main: #ffffff;     /* أبيض ناصع لأعلى وضوح للقراءة */
+            --text-muted: #cbd5e1;    /* رمادي فاتح نقي للنصوص الفرعية */
+            --accent: #ff0055;        /* لون التمييز الوردي الحاد */
+            --inner-card: #0b1329;    /* خلفية البطاقات الداخلية */
+            --border-color: #3b82f6;  /* حدود زرقاء تقنية رفيعة */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+
+        .slide {
+            display: none;
+            flex: 1;
+            padding: 40px 60px;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.4s ease-out forwards;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.7rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: var(--secondary);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .dept-card {
+            background: var(--inner-card);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .dept-card.app {
+            border-left-color: var(--secondary);
+            border-color: rgba(92, 219, 149, 0.2);
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #1c2541 0%, #0b1329 100%);
+            border: 2px solid var(--secondary) !important;
+            box-shadow: 0 0 20px rgba(92, 219, 149, 0.2) !important;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .dept-card.app li::before {
+            color: var(--secondary);
+        }
+
+        .funny-card {
+            background: var(--inner-card);
+            padding: 25px 20px;
+            border-radius: 12px;
+            border: 1px dashed rgba(255,255,255,0.2);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .funny-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .funny-card h3 {
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .funny-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: var(--inner-card);
+            border-top: 2px solid var(--border-color);
+            height: 90px;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: #0b1329;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(56, 189, 248, 0.5);
+        }
+
+        .btn:disabled {
+            background-color: #1c2541;
+            color: #475569;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .slide-number {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .title-slide {
+            text-align: center;
+        }
+        
+        .title-slide h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .mngha-logo {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            width: 105px;
+            height: auto;
+        }
+
+        .names-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .names-list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--card-bg);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge.duration {
+            color: var(--secondary);
+            border-color: rgba(92, 219, 149, 0.4);
+            background: rgba(92, 219, 149, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        
+        <div class="slide active title-slide">
+            <img class="mngha-logo" src="mngha.png" alt="MNGHA Logo">
+            
+            <h1 style="margin-top: 40px;">Our Co-Op Journey</h1>
+            <p style="font-size: 1.55rem; color: var(--secondary); margin-bottom: 15px; font-weight: 600;">Shaping the Future of IT Infrastructure & Applications</p>
+            <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 500;">Department of Computer Science</p>
+            
+            <div class="names-container">
+                <div class="names-list">
+                    <span class="badge">Ghadi Alshehri</span>
+                    <span class="badge">Bushra Magharbi</span>
+                    <span class="badge">Sadeem Mohammed</span>
+                </div>
+                <span class="badge duration">📅 Training Period: 6 Months</span>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>Who We Worked With</h1>
+            <p style="margin-bottom: 25px;">A comprehensive, structured <strong>6-Month Rotation</strong> built around two main technical branches:</p>
+            
+            <div class="grid-2">
+                <div class="dept-card">
+                    <h2>IT Infrastructure</h2>
+                    <p style="font-size: 1.15rem;">Supported network operations, configured Cisco devices, performed troubleshooting, and deployed Windows Server services including Active Directory, DNS, DHCP, and IIS.</p>
+                </div>
+                <div class="dept-card app">
+                    <h2>IT Applications</h2>
+                    <p style="font-size: 1.15rem;">Worked closely alongside enterprise application developers to transform workflows into fully functioning software platforms.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>What We Delivered ⭐</h1>
+            <p style="margin-bottom: 25px;">High-impact solutions designed, built, and tested inside the organization:</p>
+            
+            <div class="grid-2">
+                <div class="dept-card highlight-card">
+                    <h2 style="color: var(--primary); font-size: 1.7rem; margin-bottom: 10px;">🚀 Badging Portal</h2>
+                    <p style="font-size: 1.1rem; color: #fff;">A streamlined internal enterprise application built from scratch to digitize, handle, and track employee badge issuance workflows smoothly.</p>
+                </div>
+                <div class="dept-card highlight-card" style="border-color: var(--primary) !important;">
+                    <h2 style="color: var(--primary); font-size: 1.7rem; margin-bottom: 10px;">🔑 Key Control System</h2>
+                    <p style="font-size: 1.1rem; color: #fff;">A secure logging and verification system deployed to govern authorization, check-ins, and auditing of critical facility access keys.</p>
+                </div>
+            </div>
+
+            <div class="dept-card app" style="margin-top: 20px; border-left-color: var(--secondary);">
+                <h2>Enterprise Healthcare Systems</h2>
+                <p style="margin-bottom: 0;">Worked with mission-critical healthcare platforms such as BestCare and PACS, providing support and exposure to systems that serve core hospital operations and patient care workflows.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>Technical Achievements ⭐</h1>
+            <div class="grid-2">
+                <div class="dept-card">
+                    <h2>Infrastructure Operations</h2>
+                    <ul>
+                        <li>Cisco device configuration & deployment.</li>
+                        <li>Active layer-2/layer-3 network troubleshooting.</li>
+                        <li>Enterprise Windows Server complete setup.</li>
+                        <li>Full implementation of AD, DNS, DHCP, and IIS.</li>
+                    </ul>
+                </div>
+                <div class="dept-card app">
+                    <h2>Applications & Engineering</h2>
+                    <ul>
+                        <li>Professional requirements & business analysis.</li>
+                        <li>Full-stack software framework development.</li>
+                        <li>Internal secure enterprise systems deployment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>What We Learned</h1>
+            <div class="grid-2">
+                <div class="dept-card" style="border-left-color: var(--secondary);">
+                    <h2 style="color: var(--secondary);">Technical Skills</h2>
+                    <ul>
+                        <li><strong>Infrastructure Operations:</strong> Live routing, switching, and hardware mapping.</li>
+                        <li><strong>Enterprise Systems:</strong> Managing identities and directory access rules.</li>
+                        <li><strong>Software Development:</strong> Engineering clean backend architecture.</li>
+                    </ul>
+                </div>
+                <div class="dept-card" style="border-left-color: var(--primary);">
+                    <h2 style="color: var(--primary);">Professional Skills</h2>
+                    <ul>
+                        <li><strong>Teamwork & Communication:</strong> Working smoothly across IT squads.</li>
+                        <li><strong>Problem Solving:</strong> Fixing deployment blockers systematically.</li>
+                        <li><strong>Adaptability:</strong> Pivoting easily from networks to software code.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="happy2.jpg" alt="Sticker Logo" style="
+                position: absolute;
+                top: 50px;
+                right: 90px;
+                width: 140px;
+                height: auto;
+                transform: rotate(15deg);
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+                z-index: 10;
+            ">
+
+            <h1>Why Should You Hire Us? 😉</h1>
+            <div class="grid-3" style="margin-top: 20px;">
+                <div class="funny-card" style="border-top: 4px solid var(--primary);">
+                    <div class="emoji">🚀</div>
+                    <h3>Zero Onboarding Time</h3>
+                    <p style="font-size: 1.05rem; margin-top: 10px; color: var(--text-muted);">We already map out your servers, your switches, and we already memorized the coffee machine location.</p>
+                </div>
+                <div class="funny-card" style="border-top: 4px solid var(--secondary);">
+                    <div class="emoji">😏</div>
+                    <h3>We Earned Admin Rights</h3>
+                    <p style="font-size: 1.05rem; margin-top: 10px; color: var(--text-muted);">After months of hands-on work, the team trusted us with infrastructure, systems, and real-world responsibilities.</p>
+                </div>
+                <div class="funny-card" style="border-top: 4px solid var(--accent);">
+                    <div class="emoji">🎩</div>
+                    <h3>One Team, Multiple Hats</h3>
+                    <p style="font-size: 1.05rem; margin-top: 10px; color: var(--text-muted);">Why pick one specialty? You get full-stack software engineers and network sysadmins all in one team.</p>
+                </div>
+            </div>
+        </div>
+<div class="slide title-slide">
+            
+            <img src="happy5.jpg" alt="Thank You Sticker" style="
+                position: absolute;
+                bottom: 40px; /* المسافة من الأسفل لترتفع فوق شريط التحكم */
+                right: 60px;  /* المسافة من اليمين لتطابق المربع تماماً */
+                width: 130px; /* حجم الصورة، يمكنكِ زيادته أو تقليله حسب الرغبة */
+                height: auto;
+                transform: rotate(10deg); /* تدوير خفيف لليسار ليعطي تأثير الستيكر العفوي */
+                filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6)); /* ظل احترافي يعزل الصورة عن الخلفية */
+                z-index: 10;
+            ">
+
+            <h1 style="color: var(--secondary); font-size: 4.8rem; margin-bottom: 15px; text-shadow: 0 4px 10px rgba(92,219,149,0.2);">Thank You!</h1>
+            <p style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600;">We are proud to have contributed to your department's success.</p>
+            <p style="font-size: 1.4rem; color: var(--primary); font-weight: 700;">Ready for your questions... and hopefully, our employee IDs next time! 😄🤝</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+            <span class="slide-number" id="slideNum">1 / 7</span>
+            <button class="btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideNum = document.getElementById('slideNum');
+
+        // تحديث العداد ديناميكياً بناءً على مصفوفة الشرائح الفعلية
+        slideNum.textContent = `${currentSlide + 1} / ${slides.length}`;
+        updateButtonsState();
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide += direction;
+            slides[currentSlide].classList.add('active');
+
+            slideNum.textContent = `${currentSlide + 1} / ${slides.length}`;
+            updateButtonsState();
+        }
+
+        function updateButtonsState() {
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                changeSlide(1);
+            } else if (event.key === 'ArrowLeft' && currentSlide > 0) {
+                changeSlide(-1);
+            }
+        });
+    </script>
+</body>
+</html>
