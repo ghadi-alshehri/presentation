@@ -38,7 +38,7 @@
         .presentation-container {
             width: 90%;
             max-width: 1200px;
-            height: 80vh;
+            height: 85vh; /* زدنا الارتفاع الكلي شوي عشان نضمن المساحة */
             background-color: var(--card-bg);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.15);
@@ -52,11 +52,12 @@
         .slide {
             display: none;
             flex: 1;
-            padding: 40px 60px;
+            padding: 30px 50px; /* قللنا الحواف لتعطي مساحة أكبر للمحتوى */
             flex-direction: column;
             justify-content: center;
             animation: slideIn 0.4s ease-out forwards;
             position: relative;
+            overflow-y: auto; /* حماية: لو الكلام كثير يمديك تعمل سكرول داخل الشريحة بدون ما يخرب الـ Controls */
         }
 
         .slide.active {
@@ -70,8 +71,8 @@
 
         h1 {
             color: var(--primary);
-            font-size: 2.7rem;
-            margin-bottom: 20px;
+            font-size: 2.4rem; /* صغرنا خط العنوان الرئيسي شوي */
+            margin-bottom: 15px;
             font-weight: 700;
             letter-spacing: -0.02em;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -79,34 +80,34 @@
 
         h2 {
             color: var(--secondary);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 1.25rem;
-            line-height: 1.7;
+            font-size: 1.15rem;
+            line-height: 1.6;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 10px;
+            gap: 20px;
+            margin-top: 5px;
         }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 15px;
             text-align: center;
         }
 
         .dept-card {
             background: var(--inner-card);
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
             border-left: 6px solid var(--primary);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
@@ -130,12 +131,12 @@
         }
 
         li {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             position: relative;
             padding-left: 25px;
             color: #f8fafc;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         li::before {
@@ -144,7 +145,7 @@
             left: 0;
             color: var(--primary);
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .dept-card.app li::before {
@@ -153,7 +154,7 @@
 
         .funny-card {
             background: var(--inner-card);
-            padding: 25px 20px;
+            padding: 20px 15px;
             border-radius: 12px;
             border: 1px dashed rgba(255,255,255,0.2);
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
@@ -168,35 +169,38 @@
         .funny-card h3 {
             color: var(--text-main);
             margin-bottom: 8px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .funny-card .emoji {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
         }
 
+        /* شريط التحكم السفلي ثابت ومحمي تماماً ولا يمكن تغطيته */
         .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 15px 40px;
             background-color: var(--inner-card);
             border-top: 2px solid var(--border-color);
-            height: 90px;
+            height: 85px;
+            position: relative;
+            z-index: 100; /* يضمن ظهوره فوق أي محتوى طالع */
         }
 
         .btn {
             background-color: var(--primary);
             color: #0b1329;
             border: none;
-            padding: 12px 35px;
-            font-size: 1.05rem;
+            padding: 10px 30px;
+            font-size: 1rem;
             font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
-            min-width: 150px;
+            min-width: 130px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
         }
@@ -216,7 +220,6 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* تنسيق حاوية النقاط (Dots) */
         .dots-container {
             display: flex;
             gap: 12px;
@@ -225,9 +228,9 @@
         }
 
         .dot {
-            width: 14px;
-            height: 14px;
-            background-color: #475569; /* لون النقاط غير النشطة */
+            width: 12px;
+            height: 12px;
+            background-color: #475569;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -239,13 +242,13 @@
         }
 
         .dot.active {
-            background-color: var(--primary); /* تضيء باللون الأزرق عند اختيار الشريحة */
+            background-color: var(--primary);
             box-shadow: 0 0 10px var(--primary);
             transform: scale(1.3);
         }
 
         .slide-number {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary);
             min-width: 60px;
@@ -257,7 +260,7 @@
         }
         
         .title-slide h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             margin-bottom: 15px;
             color: var(--primary);
         }
@@ -266,7 +269,7 @@
             position: absolute;
             top: 25px;
             right: 40px;
-            width: 105px;
+            width: 95px;
             height: auto;
         }
 
@@ -274,22 +277,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            margin-top: 35px;
+            gap: 12px;
+            margin-top: 30px;
         }
 
         .names-list {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .badge {
             background: var(--card-bg);
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 30px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary);
             border: 1px solid var(--border-color);
@@ -310,8 +313,8 @@
             <img class="mngha-logo" src="mngha.png" alt="MNGHA Logo">
             
             <h1 style="margin-top: 40px;">Our Co-Op Journey</h1>
-            <p style="font-size: 1.55rem; color: var(--secondary); margin-bottom: 15px; font-weight: 600;">Shaping the Future of IT Infrastructure & Applications</p>
-            <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 500;">Department of Computer Science</p>
+            <p style="font-size: 1.45rem; color: var(--secondary); margin-bottom: 15px; font-weight: 600;">Shaping the Future of IT Infrastructure & Applications</p>
+            <p style="font-size: 1.2rem; color: var(--text-muted); font-weight: 500;">Department of Computer Science</p>
             
             <div class="names-container">
                 <div class="names-list">
@@ -325,38 +328,38 @@
 
         <div class="slide">
             <h1>Who We Worked With</h1>
-            <p style="margin-bottom: 25px;">A comprehensive, structured <strong>6-Month Rotation</strong> built around two main technical branches:</p>
+            <p style="margin-bottom: 20px;">A comprehensive, structured <strong>6-Month Rotation</strong> built around two main technical branches:</p>
             
             <div class="grid-2">
                 <div class="dept-card">
                     <h2>IT Infrastructure</h2>
-                    <p style="font-size: 1.15rem;">Supported network operations, configured Cisco devices, performed troubleshooting, and deployed Windows Server services including Active Directory, DNS, DHCP, and IIS.</p>
+                    <p style="font-size: 1.1rem;">Supported network operations, configured Cisco devices, performed troubleshooting, and deployed Windows Server services including Active Directory, DNS, DHCP, and IIS.</p>
                 </div>
                 <div class="dept-card app">
                     <h2>IT Applications</h2>
-                    <p style="font-size: 1.15rem;">Worked closely alongside enterprise application developers to transform workflows into fully functioning software platforms.</p>
+                    <p style="font-size: 1.1rem;">Worked closely alongside enterprise application developers to transform workflows into fully functioning software platforms.</p>
                 </div>
             </div>
         </div>
 
         <div class="slide">
             <h1>What We Delivered ⭐</h1>
-            <p style="margin-bottom: 25px;">High-impact solutions designed, built, and tested inside the organization:</p>
+            <p style="margin-bottom: 15px;">High-impact solutions designed, built, and tested inside the organization:</p>
             
             <div class="grid-2">
-                <div class="dept-card highlight-card">
-                    <h2 style="color: var(--primary); font-size: 1.7rem; margin-bottom: 10px;">🚀 Badging Portal</h2>
-                    <p style="font-size: 1.1rem; color: #fff;">A streamlined internal enterprise application built from scratch to digitize, handle, and track employee badge issuance workflows smoothly.</p>
+                <div class="dept-card highlight-card" style="padding: 15px;">
+                    <h2 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 5px;">🚀 Badging Portal</h2>
+                    <p style="font-size: 1.05rem; color: #fff; margin-bottom: 0;">A streamlined internal enterprise application built from scratch to digitize, handle, and track employee badge issuance workflows smoothly.</p>
                 </div>
-                <div class="dept-card highlight-card" style="border-color: var(--primary) !important;">
-                    <h2 style="color: var(--primary); font-size: 1.7rem; margin-bottom: 10px;">🔑 Key Control System</h2>
-                    <p style="font-size: 1.1rem; color: #fff;">A secure logging and verification system deployed to govern authorization, check-ins, and auditing of critical facility access keys.</p>
+                <div class="dept-card highlight-card" style="border-color: var(--primary) !important; padding: 15px;">
+                    <h2 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 5px;">🔑 Key Control System</h2>
+                    <p style="font-size: 1.05rem; color: #fff; margin-bottom: 0;">A secure logging and verification system deployed to govern authorization, check-ins, and auditing of critical facility access keys.</p>
                 </div>
             </div>
 
-            <div class="dept-card app" style="margin-top: 20px; border-left-color: var(--secondary);">
-                <h2>Enterprise Healthcare Systems</h2>
-                <p style="margin-bottom: 0;">Worked with mission-critical healthcare platforms such as BestCare and PACS, providing support and exposure to systems that serve core hospital operations and patient care workflows.</p>
+            <div class="dept-card app" style="margin-top: 15px; border-left-color: var(--secondary); padding: 15px;">
+                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">Enterprise Healthcare Systems</h2>
+                <p style="margin-bottom: 0; font-size: 1.05rem;">Worked with mission-critical healthcare platforms such as BestCare and PACS, providing support and exposure to systems that serve core hospital operations and patient care workflows.</p>
             </div>
         </div>
 
@@ -407,9 +410,9 @@
         <div class="slide">
             <img src="happy2.jpg" alt="Sticker Logo" style="
                 position: absolute;
-                top: 50px;
-                right: 90px;
-                width: 140px;
+                top: 40px;
+                right: 60px;
+                width: 110px;
                 height: auto;
                 transform: rotate(15deg);
                 filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
@@ -417,20 +420,21 @@
             ">
 
             <h1>Why Should You Hire Us? 😉</h1>
-            <div class="grid-3" style="margin-top: 20px;">
+            <div class="grid-3" style="margin-top: 15px;">
                 <div class="funny-card" style="border-top: 4px solid var(--primary);">
                     <div class="emoji">🚀</div>
                     <h3>Zero Onboarding Time</h3>
-                    <p style="font-size: 1.05rem; margin-top: 10px; color: var(--text-muted);">We already map out your servers, your switches, and we already memorized the coffee machine location.          </div>
+                    <p style="font-size: 1rem; margin-top: 8px; color: var(--text-muted);">We already map out your servers, your switches, and we already memorized the coffee machine location.</p> 
+                </div>
                 <div class="funny-card" style="border-top: 4px solid var(--secondary);">
                     <div class="emoji">😏</div>
                     <h3>We Earned Admin Rights</h3>
-                    <p style="font-size: 1.05rem; margin-top: 10px; color: var(--text-muted);">After months of hands-on work, the team trusted us with infrastructure, systems, and real-world responsibilities.</p>
+                    <p style="font-size: 1rem; margin-top: 8px; color: var(--text-muted);">After months of hands-on work, the team trusted us with infrastructure, systems, and real-world responsibilities.</p>
                 </div>
                 <div class="funny-card" style="border-top: 4px solid var(--accent);">
                     <div class="emoji">🎩</div>
                     <h3>One Team, Multiple Hats</h3>
-                    <p style="font-size: 1.05rem; margin-top: 10px; color: var(--text-muted);">Why pick one specialty? You get full-stack software engineers and network sysadmins all in one team.</p>
+                    <p style="font-size: 1rem; margin-top: 8px; color: var(--text-muted);">Why pick one specialty? You get full-stack software engineers and network sysadmins all in one team.</p>
                 </div>
             </div>
         </div>
@@ -440,16 +444,16 @@
                 position: absolute;
                 bottom: 40px;
                 right: 60px;
-                width: 150px;
+                width: 120px;
                 height: auto;
                 transform: rotate(-10deg);
                 filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
                 z-index: 10;
             ">
 
-            <h1 style="color: var(--secondary); font-size: 4.8rem; margin-bottom: 15px; text-shadow: 0 4px 10px rgba(92,219,149,0.2);">Thank You!</h1>
-            <p style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600;">We are proud to have contributed to your department's success.</p>
-            <p style="font-size: 1.4rem; color: var(--primary); font-weight: 700;">Ready for your questions... and hopefully, our employee IDs next time! 😄🤝</p>
+            <h1 style="color: var(--secondary); font-size: 4.2rem; margin-bottom: 15px; text-shadow: 0 4px 10px rgba(92,219,149,0.2);">Thank You!</h1>
+            <p style="font-size: 1.6rem; color: var(--text-main); margin-bottom: 20px; font-weight: 600;">We are proud to have contributed to your department's success.</p>
+            <p style="font-size: 1.3rem; color: var(--primary); font-weight: 700;">Ready for your questions... and hopefully, our employee IDs next time! 😄🤝</p>
         </div>
 
         <div class="controls">
